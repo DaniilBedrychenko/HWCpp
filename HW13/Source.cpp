@@ -2,7 +2,6 @@
 
 using namespace std;
 
-// 1. Функція для видалення символу за індексом
 void removeCharAt(char* str, int index) {
     if (str == nullptr || index < 0)
         return;
@@ -17,7 +16,7 @@ void removeCharAt(char* str, int index) {
     }
 }
 
-// 2. Функція для видалення всіх входжень заданого символу
+
 void removeAllChar(char* str, char ch) {
     if (str == nullptr)
         return;
@@ -31,7 +30,7 @@ void removeAllChar(char* str, char ch) {
     str[j] = '\0';
 }
 
-// 3. Функція для вставки символу у вказану позицію
+
 void insertChar(char* str, int index, char ch, int maxLen) {
     if (str == nullptr || index < 0 || index > maxLen)
         return;
@@ -47,7 +46,7 @@ void insertChar(char* str, int index, char ch, int maxLen) {
     str[index] = ch;
 }
 
-// 4. Функція для заміни '.' на '!'
+
 void replaceDotsWithExclamations(char* str) {
     if (str == nullptr)
         return;
@@ -59,7 +58,7 @@ void replaceDotsWithExclamations(char* str) {
     }
 }
 
-// 5. Функція для підрахунку входжень символу
+
 int countChar(const char* str, char ch) {
     if (str == nullptr)
         return 0;
@@ -73,7 +72,7 @@ int countChar(const char* str, char ch) {
     return count;
 }
 
-// 6. Функція для підрахунку літер, цифр та інших символів
+
 void countCharTypes(const char* str, int& letters, int& digits, int& others) {
     letters = digits = others = 0;
     if (str == nullptr)
@@ -90,7 +89,7 @@ void countCharTypes(const char* str, int& letters, int& digits, int& others) {
     }
 }
 
-// 7. Додаткові функції бібліотеки
+
 int mystrcmp(const char* str1, const char* str2) {
     while (*str1 && (*str1 == *str2)) {
         str1++;
@@ -206,19 +205,19 @@ int main() {
     cout << "Введіть рядок: ";
     cin.getline(str, MAX_LEN);
     
-    // 1. Видалення символу за індексом
+    // 1. 
     cout << "Введіть індекс символу для видалення: ";
     cin >> index;
     removeCharAt(str, index);
     cout << "Рядок після видалення: " << str << endl;
     
-    // 2. Видалення всіх входжень символу
+    // 2.
     cout << "Введіть символ для видалення: ";
     cin >> ch;
     removeAllChar(str, ch);
     cout << "Рядок після видалення символу '" << ch << "': " << str << endl;
     
-    // 3. Вставка символу
+    // 3.
     cout << "Введіть позицію для вставки: ";
     cin >> index;
     cout << "Введіть символ для вставки: ";
@@ -226,21 +225,21 @@ int main() {
     insertChar(str, index, ch, MAX_LEN);
     cout << "Рядок після вставки: " << str << endl;
     
-    // 4. Заміна крапок на знаки оклику
+    // 4. 
     replaceDotsWithExclamations(str);
     cout << "Рядок після заміни '.' на '!': " << str << endl;
     
-    // 5. Підрахунок входжень символу
+    // 5. 
     cout << "Введіть символ для пошуку: ";
     cin >> ch;
     count = countChar(str, ch);
     cout << "Символ '" << ch << "' зустрічається " << count << " разів" << endl;
     
-    // 6. Підрахунок типів символів
+    // 6.
     countCharTypes(str, letters, digits, others);
     cout << "Літер: " << letters << ", Цифр: " << digits << ", Інших: " << others << endl;
     
-    // 7. Тестування бібліотечних функцій
+    // 7. 
     char str2[MAX_LEN];
     cout << "Введіть другий рядок для порівняння: ";
     cin.ignore();
