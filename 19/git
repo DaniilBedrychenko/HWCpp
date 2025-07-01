@@ -1,0 +1,55 @@
+# 1. Встановлення та налаштування Git
+git config --global user.name "Your Name"  # Налаштування імені користувача
+git config --global user.email "your email@gmail.com"  # Налаштування email
+
+# 2. Створення папки з двома підпапками та файлами
+mkdir my_project  # Створення головної папки
+cd my_project
+mkdir subfolder1 subfolder2  # Створення двох підпапок
+echo "Content of file1" > subfolder1/file1.txt  # Створення файлу в subfolder1
+echo "Content of file2" > subfolder1/file2.txt
+echo "Content of file3" > subfolder2/file3.txt
+echo "Content of file4" > subfolder2/file4.txt
+
+# 3. Створення репозиторію в головній папці
+git init  # Ініціалізація Git-репозиторію
+
+# 4. Додавання вмісту підпапок в індекс
+git add subfolder1 subfolder2  # Додавання двох підпапок до індексу
+
+# 5. Створення commit із доданими підпапками
+git commit -m "Initial commit with subfolder1 and subfolder2"  # Створення першого коміту
+
+# 6. Зміна вмісту файлу та створення нового commit
+echo "Updated content" >> subfolder1/file1.txt  # Зміна вмісту file1.txt
+git add subfolder1/file1.txt  # Додавання зміненого файлу до індексу
+git commit -m "Updated file1.txt in subfolder1"  # Створення коміту зі змінами
+
+# 7. Створення нової підпапки, наповнення даними та створення commit
+mkdir subfolder3  # Створення нової підпапки
+echo "Content of file5" > subfolder3/file5.txt  # Створення файлу в subfolder3
+git add subfolder3  # Додавання нової підпапки до індексу
+git commit -m "Added subfolder3 with file5.txt"  # Створення коміту
+
+# 8. Зміна файлу, збереження змін, скасування змін у локальній копії
+echo "Temporary change" >> subfolder3/file5.txt  # Зміна вмісту file5.txt
+git checkout -- subfolder3/file5.txt  # Скасування змін у локальній копії файлу
+
+# 9. Зміна файлу, додавання в індекс, скасування змін в індексі
+echo "Another change" >> subfolder3/file5.txt  # Зміна вмісту file5.txt
+git add subfolder3/file5.txt  # Додавання змін до індексу
+git reset subfolder3/file5.txt  # Скасування змін в індексі
+
+# 10. Зміна файлу, додавання в індекс, створення commit, скасування commit
+echo "New change" >> subfolder3/file5.txt  # Зміна вмісту file5.txt
+git add subfolder3/file5.txt  # Додавання змін до індексу
+git commit -m "Updated file5.txt in subfolder3"  # Створення коміту
+git revert HEAD  # Створення нового коміту, що скасовує останній
+
+# 11. Видалення кількох останніх commit
+git reset --hard HEAD~2  # Видалення двох останніх комітів (повернення до стану два коміти назад)
+
+# 12. Внесення змін в останній commit
+echo "Amended change" >> subfolder3/file5.txt  # Зміна вмісту файлу
+git add subfolder3/file5.txt  # Додавання змін до індексу
+git commit --amend -m "Amended last commit"  # Оновлення останнього коміту
