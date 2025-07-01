@@ -1,0 +1,66 @@
+# 1. 
+git config --global user.name "Your name"  # Налаштування імені користувача
+git config --global user.email "your email@gmail.com"  # Налаштування email
+
+# 2. Створення папки з підпапками та файлами
+mkdir my_project  # Створення головної папки
+cd my_project
+mkdir subfolder1 subfolder2  # Створення двох підпапок
+echo "Content of file1" > subfolder1/file1.txt  # Створення файлу в subfolder1
+echo "Content of file2" > subfolder1/file2.txt
+echo "Content of file3" > subfolder2/file3.txt
+echo "Content of file4" > subfolder2/file4.txt
+
+# 3. Створення локального репозиторію
+git init  # Ініціалізація Git-репозиторію
+git remote add origin <repository_url>  # Додавання віддаленого репозиторію GitHub
+
+# 4. Додавання вмісту папки в індекс
+git add .  # Додавання всіх файлів та підпапок до індексу
+
+# 5. Створення commit із доданими даними
+git commit -m "Initial commit with subfolder1 and subfolder2"  # Створення першого коміту
+git push origin master  # Відправлення коміту до GitHub
+
+# 6. Створення нової гілки newbranch
+git checkout -b newbranch  # Створення та перехід на гілку newbranch
+git push origin newbranch  # Відправлення гілки до GitHub
+
+# 7. Створення нової підпапки в гілці newbranch, наповнення даними та створення commit
+mkdir subfolder3  # Створення нової підпапки
+echo "Content of file5" > subfolder3/file5.txt  # Створення файлу в subfolder3
+git add subfolder3  # Додавання нової підпапки до індексу
+git commit -m "Added subfolder3 with file5.txt in newbranch"  # Створення коміту
+git push origin newbranch  # Відправлення коміту до GitHub
+
+# 8. Перехід у гілку master, створення нової підпапки, наповнення даними та створення commit
+git checkout master  # Перехід на гілку master
+mkdir subfolder4  # Створення нової підпапки
+echo "Content of file6" > subfolder4/file6.txt  # Створення файлу в subfolder4
+git add subfolder4  # Додавання нової підпапки до індексу
+git commit -m "Added subfolder4 with file6.txt in master"  # Створення коміту
+git push origin master  # Відправлення коміту до GitHub
+
+# 9. Перехід у гілку newbranch та злиття вмісту гілки master
+git checkout newbranch  # Перехід на гілку newbranch
+git merge master  # Злиття гілки master у newbranch
+git push origin newbranch  # Відправлення змін до GitHub
+
+# 10. Перехід у гілку master, внесення змін у файли для створення конфлікту та створення commit
+git checkout master  # Перехід на гілку master
+echo "Conflicting change in file1" > subfolder1/file1.txt  # Зміна файлу для конфлікту
+git add subfolder1/file1.txt  # Додавання змін до індексу
+git commit -m "Modified file1.txt in master to cause conflict"  # Створення коміту
+git push origin master  # Відправлення коміту до GitHub
+
+# 11. Перехід у гілку newbranch, злиття master та розв'язання конфліктів
+git checkout newbranch  # Перехід на гілку newbranch
+echo "Different change in file1" > subfolder1/file1.txt  # Зміна того ж файлу для конфлікту
+git add subfolder1/file1.txt  # Додавання змін до індексу
+git commit -m "Modified file1.txt in newbranch"  # Створення коміту
+git push origin newbranch  # Відправлення коміту до GitHub
+git merge master  # Спроба злиття master у newbranch (виникне конфлікт)
+# Ручне розв'язання конфлікту у file1.txt (редагування файлу для збереження потрібних змін)
+git add subfolder1/file1.txt  # Додавання розв'язаного файлу до індексу
+git commit -m "Resolved merge conflict in file1.txt"  # Завершення злиття
+git push origin newbranch  # Відправлення змін до GitHub
